@@ -19,7 +19,7 @@ import com.relasi_jpa.dto.ResponseData;
 import com.relasi_jpa.models.entities.Category;
 import com.relasi_jpa.services.CategoryService;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 
 
 @RestController
@@ -49,7 +49,7 @@ public class CategoryController {
     }
 
     @GetMapping("/{id}")
-    public Category findOne(@RequestParam Long id) {
+    public Category findOne(@PathVariable("id") Long id) {
         return categoryService.findOne(id);
     }
     

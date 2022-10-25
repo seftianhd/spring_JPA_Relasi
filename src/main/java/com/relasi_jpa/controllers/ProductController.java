@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.relasi_jpa.dto.ResponseData;
+import com.relasi_jpa.dto.SearchData;
 import com.relasi_jpa.models.entities.Product;
+import com.relasi_jpa.models.entities.Supplier;
 import com.relasi_jpa.services.ProductService;
 
 @RestController
@@ -78,5 +80,13 @@ public class ProductController {
         productService.removeOne(id);
     }
 
+    @PostMapping("/{id}")
+    public void addSupplier(@RequestBody Supplier supplier, @PathVariable("id") long productId){
+        productService.addSupplier(supplier, productId);
+    }
     
+    @PostMapping("/search/name")
+    public Product getProductByName(@RequestBody SearchData searchData){
+        return productService.finByProductName(searchData.getSearchKey());
+    }
 }

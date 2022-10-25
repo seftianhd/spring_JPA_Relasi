@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name = "tbel_supplier")
 public class Supplier {
@@ -28,6 +30,7 @@ public class Supplier {
     private String email;
 
     @ManyToMany(mappedBy = "suppliers")
+    @JsonBackReference
     private Set<Product> products;
 
     public Supplier() {

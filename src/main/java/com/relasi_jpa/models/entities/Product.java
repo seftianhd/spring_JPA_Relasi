@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "tbel_product")
 public class Product {
@@ -38,6 +40,7 @@ public class Product {
         name = "product_supplier", 
         joinColumns = @JoinColumn(name = "product_id"), 
         inverseJoinColumns = @JoinColumn(name = "supplier_id"))
+    @JsonManagedReference
     private Set<Supplier> suppliers;
 
     public Product() {
